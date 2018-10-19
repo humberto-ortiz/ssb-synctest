@@ -64,16 +64,20 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get -y install ttyload
     su - vagrant -c 'bash /vagrant/install.sh'
   SHELL
 
+  config.vm.provision "file", source: "config", destination: "~vagrant/.ssb/config"
+
   config.vm.define "sbot1" do |sbot1|
-    sbot1.vm.network "private_network", ip: "192.168.118.1"
+    sbot1.vm.network "private_network", ip: "192.168.118.11"
     sbot1.vm.provision "file", source: "sbot1.secret", destination: "~vagrant/.ssb/secret"
   end
 
   config.vm.define "sbot2" do |sbot2|
-    sbot2.vm.network "private_network", ip: "192.168.118.2"
+    sbot2.vm.network "private_network", ip: "192.168.118.12"
   end
   
 end

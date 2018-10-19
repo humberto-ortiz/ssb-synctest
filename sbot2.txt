@@ -1,6 +1,0 @@
-#!/bin/bash
-
- sbot gossip.connect 192.168.118.1:8008:@E5VDgU3YPTnUf+p3MiZWOaTgAqkN8xVsCF8vJC2Pd4M=.ed25519
-sbot publish --type contact --contact @E5VDgU3YPTnUf+p3MiZWOaTgAqkN8xVsCF8vJC2Pd4M=.ed25519 --following true
-sbot replicate.request @E5VDgU3YPTnUf+p3MiZWOaTgAqkN8xVsCF8vJC2Pd4M=.ed25519
-sbot log
